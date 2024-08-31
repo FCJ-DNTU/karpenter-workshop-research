@@ -47,6 +47,7 @@ Setup something before create EKS Cluster with
 
 ```bash
 bash setup_wscf.sh
+source ~/.bashrc
 ```
 
 Then, you need to setup a cluster for our workshop
