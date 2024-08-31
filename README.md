@@ -43,17 +43,17 @@ bash setup_deps.sh
 
 > Note: you don't need to run `_setup_env.sh`, if you want to change some information, enter this script.
 
-Setup something before create EKS Cluster with
+Next, you need to setup a cluster for our workshop
+
+```bash
+bash setup_cluster.sh
+```
+
+Then, setup KarpenterNodeRole and something and prepare go to the final step
 
 ```bash
 bash setup_wscf.sh
 source ~/.bashrc
-```
-
-Then, you need to setup a cluster for our workshop
-
-```bash
-bash setup_cluster.sh
 ```
 
 Finally, setup something to install Karpenter

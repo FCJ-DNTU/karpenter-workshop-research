@@ -43,7 +43,6 @@ successln "Done!"
 
 # Use Helm to install Karpenter
 infoln "5. Install Karpenter using Helm"
-aws iam create-service-linked-role --aws-service-name spot.amazonaws.com || true
 helm registry logout public.ecr.aws
 helm upgrade --install karpenter oci://public.ecr.aws/karpenter/karpenter --version ${KARPENTER_VERSION_STR} --namespace karpenter --create-namespace \
   --set serviceAccount.annotations."eks\.amazonaws\.com/role-arn"=${KARPENTER_IAM_ROLE_ARN} \
