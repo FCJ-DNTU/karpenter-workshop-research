@@ -8,28 +8,25 @@ We reseach Karpenter Workshop to understand why it's so important in autoscaling
 
 ## How to use this repository?
 
-First, you must have an AWS Account and a User who has fit permissions. Then you have to launch an EC2 instance, at least `...` (Ubuntu). And you need to install git to get this repository.
+First, you must have an AWS Account and a User who has fit permissions. Then you have to launch an EC2 instance, `t2.micro` (Ubuntu). And you need to install git to get this repository.
 
 ```bash
 git clone https://github.com/FCJ-DNTU/karpenter-workshop-research.git
 cd karpenter-workshop-research
 ```
 
-We write some script to group and categorize the requirements installation. So these scripts must be executed sequentially.
-
-Before you run `setup_deps.sh`, you have to setup something
+You need to setup your aws credential in `_setup_env.sh`
 
 ```bash
-vim setup_deps.sh
+vim _setup_env.sh
 ```
 
-You'll replace these \*\*\* with your proper values
-
 ```bash
-export AWS_ACCESS_KEY_ID=***
-export AWS_SECRET_ACCESS_KEY=***
-export AWS_DEFAULT_OUTPUT=***
-export AWS_DEFAULT_REGION=***
+# Find these lines
+export AWS_ACCESS_KEY_ID="***"
+export AWS_SECRET_ACCESS_KEY="***"
+export AWS_DEFAULT_REGION="***"
+export AWS_DEFAULT_OUTPUT=json
 ```
 
 Then save changes and close
@@ -42,4 +39,18 @@ Now, we can run `setup_deps.sh` to install all of the requirements (CLI, Tools, 
 
 ```bash
 bash setup_deps.sh
+```
+
+> Note: you don't need to run `_setup_env.sh`, if you want to change some information, enter this script.
+
+Then, you need to setup a cluster for our workshop
+
+```bash
+bash setup_cluster.sh
+```
+
+Finally, setup something to install Karpenter
+
+```bash
+bash setup_karpenter.sh
 ```

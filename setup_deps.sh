@@ -12,13 +12,6 @@ unzip awscliv2.zip
 sudo ./aws/install
 successln "AWS CLI is installed! $(aws --version)"
 
-# Set up aws credentials
-# You have to edit these informations
-export AWS_ACCESS_KEY_ID=***
-export AWS_SECRET_ACCESS_KEY=***
-export AWS_DEFAULT_OUTPUT=***
-export AWS_DEFAULT_REGION=***
-
 # Install Kubernetes CLI
 infoln "Kubernetes CLI is being installed..."
 curl -LO "https://dl.k8s.io/release/v1.31.0/bin/linux/amd64/kubectl"
