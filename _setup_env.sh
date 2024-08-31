@@ -16,3 +16,10 @@ export TEMPOUT="$(mktemp)"
 export ARM_AMI_ID="$(aws ssm get-parameter --name /aws/service/eks/optimized-ami/${K8S_VERSION}/amazon-linux-2-arm64/recommended/image_id --query Parameter.Value --output text)"
 export AMD_AMI_ID="$(aws ssm get-parameter --name /aws/service/eks/optimized-ami/${K8S_VERSION}/amazon-linux-2/recommended/image_id --query Parameter.Value --output text)"
 export GPU_AMI_ID="$(aws ssm get-parameter --name /aws/service/eks/optimized-ami/${K8S_VERSION}/amazon-linux-2-gpu/recommended/image_id --query Parameter.Value --output text)"
+
+# Save to profile
+echo "export AWS_ACCOUNT_ID=$AWS_ACCOUNT_ID" >> "$HOME"/.bashrc
+echo "export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" >> "$HOME"/.bashrc
+echo "export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" >> "$HOME"/.bashrc
+echo "export AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION" >> "$HOME"/.bashrc
+echo "export AWS_DEFAULT_OUTPUT=$AWS_DEFAULT_OUTPUT" >> "$HOME"/.bashrc

@@ -43,6 +43,12 @@ bash setup_deps.sh
 
 > Note: you don't need to run `_setup_env.sh`, if you want to change some information, enter this script.
 
+Setup something before create EKS Cluster with
+
+```bash
+bash setup_wscf.sh
+```
+
 Then, you need to setup a cluster for our workshop
 
 ```bash
