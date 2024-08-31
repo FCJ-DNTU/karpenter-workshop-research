@@ -2,9 +2,9 @@
 
 # Set ENV
 export KARPENTER_NAMESPACE="fcj-dntu"
-export KARPENTER_VERSION="v0.37.1"
+export KARPENTER_VERSION="v0.34.8"
 export KARPENTER_VERSION_STR="${KARPENTER_VERSION/v}"
-export K8S_VERSION="1.30"
+export K8S_VERSION="1.29"
 export AWS_PARTITION="aws" # if you are not using standard partitions, you may need to configure to aws-cn / aws-us-gov
 export CLUSTER_NAME="${USER}-karpenter-workshop"
 export AWS_ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
