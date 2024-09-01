@@ -17,18 +17,7 @@ git clone https://github.com/FCJ-DNTU/karpenter-workshop-research.git
 cd karpenter-workshop-research
 ```
 
-You need to setup your aws credential in `_setup_env.sh`
-
-```bash
-vim _setup_env.sh
-```
-
-And run \_setup_env.sh to assign variables
-
-```bash
-bash _setup_env.sh
-source ~/.bashrc
-```
+First, you have to edit some information like below
 
 ```bash
 # Find these lines
@@ -50,7 +39,18 @@ Now, we can run `setup_deps.sh` to install all of the requirements (CLI, Tools, 
 bash setup_deps.sh
 ```
 
-> Note: you don't need to run `_setup_env.sh`, if you want to change some information, enter this script.
+You need to setup your aws credential in `_setup_env.sh`
+
+```bash
+vim _setup_env.sh
+```
+
+And run \_setup_env.sh to assign variables
+
+```bash
+bash _setup_env.sh
+source ~/.bashrc
+```
 
 Setup something before create EKS Cluster with
 
