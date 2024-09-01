@@ -49,7 +49,13 @@ cd karpenter-workshop-research
 
 ### Assign access and secret access key
 
-First, you have to edit AWS CLI credential as environment variables
+First, you have to edit AWS CLI credential as environment variables in `_setup_env.sh` script
+
+```bash
+vim _setup_env.sh
+```
+
+Enter your Access key and Secret access key
 
 ```bash
 export AWS_ACCESS_KEY_ID="***"
