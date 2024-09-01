@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Setup AWS CLI profile with
-export AWS_ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
 export AWS_ACCESS_KEY_ID="***"
 export AWS_SECRET_ACCESS_KEY="***"
 export AWS_DEFAULT_REGION="us-west-2"
 export AWS_DEFAULT_OUTPUT=json
+export AWS_ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
 export AZ1="$AWS_DEFAULT_REGION"a
 export AZ2="$AWS_DEFAULT_REGION"b
 
