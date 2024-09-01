@@ -30,7 +30,7 @@ eksctl utils associate-iam-oidc-provider --cluster ${CLUSTER_NAME} --approve
 
 eksctl create iamserviceaccount \
   --cluster ${CLUSTER_NAME} --name karpenter --namespace ${KARPENTER_NAMESPACE} \
-  --role-name "${CLUSTER_NAME}-karpenter" \
+  --role-name "${CLUSTER_NAME}-karpenter-service-account" \
   --attach-policy-arn "arn:aws:iam::${AWS_ACCOUNT_ID}:policy/KarpenterControllerPolicy-${CLUSTER_NAME}" \
   --role-only \
   --approve
