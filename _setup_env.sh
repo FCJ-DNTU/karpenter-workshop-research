@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Setup AWS CLI profile with
+export AWS_ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
+export AWS_ACCESS_KEY_ID="***"
+export AWS_SECRET_ACCESS_KEY="***"
+export AWS_DEFAULT_REGION="us-west-2"
+export AWS_DEFAULT_OUTPUT=json
+export AZ1="$AWS_DEFAULT_REGION"a
+export AZ2="$AWS_DEFAULT_REGION"b
+
 # Configure workspace
 export KARPENTER_NAMESPACE="fcj-dntu"
 export KARPENTER_VERSION="v0.37.1"
@@ -11,15 +20,6 @@ export TEMPOUT="$(mktemp)"
 export ARM_AMI_ID="$(aws ssm get-parameter --name /aws/service/eks/optimized-ami/${K8S_VERSION}/amazon-linux-2-arm64/recommended/image_id --query Parameter.Value --output text)"
 export AMD_AMI_ID="$(aws ssm get-parameter --name /aws/service/eks/optimized-ami/${K8S_VERSION}/amazon-linux-2/recommended/image_id --query Parameter.Value --output text)"
 export GPU_AMI_ID="$(aws ssm get-parameter --name /aws/service/eks/optimized-ami/${K8S_VERSION}/amazon-linux-2-gpu/recommended/image_id --query Parameter.Value --output text)"
-
-# Setup AWS CLI profile with
-export AWS_ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
-export AWS_ACCESS_KEY_ID="***"
-export AWS_SECRET_ACCESS_KEY="***"
-export AWS_DEFAULT_REGION="us-west-2"
-export AWS_DEFAULT_OUTPUT=json
-export AZ1="$AWS_DEFAULT_REGION"a
-export AZ2="$AWS_DEFAULT_REGION"b
 
 # Save to profile
 echo "export KARPENTER_NAMESPACE=$KARPENTER_NAMESPACE" >> "$HOME"/.bashrc
