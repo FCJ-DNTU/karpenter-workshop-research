@@ -17,14 +17,11 @@ git clone https://github.com/FCJ-DNTU/karpenter-workshop-research.git
 cd karpenter-workshop-research
 ```
 
-First, you have to edit some information like below
+First, you have to edit AWS CLI credential as environment variables
 
 ```bash
-# Find these lines
 export AWS_ACCESS_KEY_ID="***"
 export AWS_SECRET_ACCESS_KEY="***"
-export AWS_DEFAULT_REGION="***"
-export AWS_DEFAULT_OUTPUT=json
 ```
 
 Then save changes and close
