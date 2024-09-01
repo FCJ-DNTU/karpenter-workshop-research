@@ -1,7 +1,6 @@
 #!/bin/bash
 
 . utils.sh
-. _setup_env.sh
 
 orangeln "Setup Karpenter..."
 println "This process is crucial for doing this workshop. If there is any failed step, you won't complete your workshop!!"
@@ -11,6 +10,9 @@ infoln "1. Setup ENV"
 export CLUSTER_ENDPOINT="$(aws eks describe-cluster --name "${CLUSTER_NAME}" --query "cluster.endpoint" --output text)"
 export KARPENTER_IAM_ROLE_ARN="arn:${AWS_PARTITION}:iam::${AWS_ACCOUNT_ID}:role/${CLUSTER_NAME}-karpenter"
 successln "Done!"
+
+echo "export CLUSTER_ENDPOINT=$CLUSTER_ENDPOINT" >> "$HOME"/.bashrc
+echo "export KARPENTER_IAM_ROLE_ARN=$KARPENTER_IAM_ROLE_ARN" >> "$HOME"/.bashrc
 
 # Add Karpenter node role to aws-auth configmap
 infoln "2. Add the Karpenter node role to the aws-auth configmap"
@@ -27,13 +29,13 @@ infoln "3. Create KarpenterController IAM Role"
 eksctl utils associate-iam-oidc-provider --cluster ${CLUSTER_NAME} --approve
 
 eksctl create iamserviceaccount \
-  --cluster "${CLUSTER_NAME}" --name karpenter --namespace karpenter \
+  --cluster ${CLUSTER_NAME} --name karpenter --namespace ${KARPENTER_NAMESPACE} \
   --role-name "${CLUSTER_NAME}-karpenter" \
   --attach-policy-arn "arn:aws:iam::${AWS_ACCOUNT_ID}:policy/KarpenterControllerPolicy-${CLUSTER_NAME}" \
   --role-only \
   --approve
 
-orangeln "Check IAM service account was created - $(eksctl get iamserviceaccount --cluster $CLUSTER_NAME --namespace karpenter)"
+orangeln "Check IAM service account was created - $(eksctl get iamserviceaccount --cluster $CLUSTER_NAME --namespace $KARPENTER_NAMESPACE)"
 successln "Done!"
 
 # Create the EC2 Spot Service Linked Role
@@ -44,7 +46,7 @@ successln "Done!"
 # Use Helm to install Karpenter
 infoln "5. Install Karpenter using Helm"
 helm registry logout public.ecr.aws
-helm upgrade --install karpenter oci://public.ecr.aws/karpenter/karpenter --version ${KARPENTER_VERSION_STR} --namespace karpenter --create-namespace \
+helm upgrade --install karpenter oci://public.ecr.aws/karpenter/karpenter --version ${KARPENTER_VERSION_STR} --namespace ${KARPENTER_NAMESPACE} --create-namespace \
   --set serviceAccount.annotations."eks\.amazonaws\.com/role-arn"=${KARPENTER_IAM_ROLE_ARN} \
   --set settings.clusterName=${CLUSTER_NAME} \
   --set settings.clusterEndpoint=${CLUSTER_ENDPOINT} \

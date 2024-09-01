@@ -1,7 +1,6 @@
 #!/bin/bash
 
 . utils.sh
-. _setup_env.sh
 
 infoln "EKS Cluster is be installed..."
 eksctl create cluster -f - <<EOF

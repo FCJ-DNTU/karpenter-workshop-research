@@ -8,7 +8,9 @@ We reseach Karpenter Workshop to understand why it's so important in autoscaling
 
 ## How to use this repository?
 
-First, you must have an AWS Account and a User who has fit permissions. Then you have to launch an EC2 instance, `t2.micro` (Ubuntu). And you need to install git to get this repository.
+First, you must have an AWS Account and a User who has fit permissions. Then you have to launch an EC2 instance, `t2.micro` (Ubuntu 20.04). And you need to install git to get this repository.
+
+> Note: this workshop is performed in `us-west-2` (Oregon)
 
 ```bash
 git clone https://github.com/FCJ-DNTU/karpenter-workshop-research.git
@@ -19,6 +21,13 @@ You need to setup your aws credential in `_setup_env.sh`
 
 ```bash
 vim _setup_env.sh
+```
+
+And run \_setup_env.sh to assign variables
+
+```bash
+bash _setup_env.sh
+source ~/.bashrc
 ```
 
 ```bash
@@ -43,21 +52,23 @@ bash setup_deps.sh
 
 > Note: you don't need to run `_setup_env.sh`, if you want to change some information, enter this script.
 
-Next, you need to setup a cluster for our workshop
-
-```bash
-bash setup_cluster.sh
-```
-
-Then, setup KarpenterNodeRole and something and prepare go to the final step
+Setup something before create EKS Cluster with
 
 ```bash
 bash setup_wscf.sh
 source ~/.bashrc
 ```
 
+Then, you need to setup a cluster for our workshop
+
+```bash
+bash setup_cluster.sh
+```
+
 Finally, setup something to install Karpenter
 
 ```bash
 bash setup_karpenter.sh
+# Reload all environemtal variables in profile
+source ~/.bashrc
 ```

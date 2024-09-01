@@ -1,7 +1,6 @@
 #!/bin/bash
 
 . utils.sh
-. _setup_env.sh
 
 infoln "Setting up workshop environment with CloudFormation..."
 # Setup workshop environment with CloudFormation

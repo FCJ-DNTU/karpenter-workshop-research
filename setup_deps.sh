@@ -24,7 +24,7 @@ kubectl version --client --output=yaml
 
 # Install AWS EKS CLI
 infoln "AWS EKS CLI is being installed..."
-curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/v0.176.0/eksctl_Linux_amd64.tar.gz" | tar xz -C /tmp
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/v0.189.0/eksctl_Linux_amd64.tar.gz" | tar xz -C /tmp
 sudo mv /tmp/eksctl /usr/local/bin/
 successln "AWS EKS CLI is installed! $(eksctl version)"
 
